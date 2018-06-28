@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.IO;
 using System.Text;
 public class master : MonoBehaviour {
@@ -19,12 +20,19 @@ public class master : MonoBehaviour {
     public Text b;
     public Text objname;
     bool r = false;
-	void Start () {
+
+    
+    void Start () {
         actionlog = new StreamWriter("Assets/action.txt",true);
         actionlog.WriteLine("start");
         //actionlog.Close();
         allthings = Resources.FindObjectsOfTypeAll(typeof(drag));
         print("dsdsd"+allthings.Length);
+        
+    }
+    public void backtologin()
+    {
+        SceneManager.LoadScene("login", LoadSceneMode.Single);
         
     }
     public void prev()
@@ -108,19 +116,33 @@ public class master : MonoBehaviour {
         d.theone = true;
         objname.text = d.gameObject.name;
         d.rotate = r;
-        
-        
-        if (Input.GetKey(KeyCode.W))
+
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0f) // forward
         {
             camin();
         }
-        if (Input.GetKey(KeyCode.S))
+        else if (Input.GetAxis("Mouse ScrollWheel") < 0f) // backwards
         {
             camout();
         }
-        if (Input.GetKey(KeyCode.V))
+        if (Input.GetMouseButtonDown(1) && Input.GetMouseButtonDown(0))
         {
-            backto();
+            actionlog.WriteLine("moving camera");
+        }
+        else if (Input.GetMouseButtonDown(0)){
+            actionlog.WriteLine("drag to move");
+        }
+        else if (Input.GetMouseButtonDown(1))
+        {
+            actionlog.WriteLine("drag to rotate");
+        }
+        if (Input.GetMouseButton(1) && Input.GetMouseButton(0))
+        {
+            rotx = Input.GetAxis("Mouse X") * 10f * Mathf.Deg2Rad;
+            roty = Input.GetAxis("Mouse Y") *10f * Mathf.Deg2Rad;
+            cam.transform.RotateAround(d.transform.position, cam.transform.up, -rotx);
+            cam.transform.RotateAround(d.transform.position, cam.transform.right, roty);
         }
 
 

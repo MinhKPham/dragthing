@@ -25,9 +25,10 @@ public class drag : MonoBehaviour {
         lastro = transform.rotation;
         
     }
-	
-	// Update is called once per frame
-	void Update () {
+    
+
+    // Update is called once per frame
+    void Update () {
         if (!theone)
         {
             lastpo = transform.position;
@@ -54,8 +55,8 @@ public class drag : MonoBehaviour {
     {
         rotz -= 1;
     }
-
-    private void OnMouseDrag()
+    
+    private void OnMouseOver()
     {
         
         //actionlog.Close();
@@ -65,9 +66,10 @@ public class drag : MonoBehaviour {
         mousePosition.z = (Vector3.Project(Camera.main.transform.position- transform.position, Camera.main.transform.forward)).magnitude;
 
         Vector3 objPosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        
-        if (rotate)
+
+        if (Input.GetMouseButton(1) && !Input.GetMouseButton(0))
         {
+            
             rotx = Input.GetAxis("Mouse X") * rotspeed * Mathf.Deg2Rad;
             roty = Input.GetAxis("Mouse Y") * rotspeed * Mathf.Deg2Rad;
             //fromrot = transform.rotation;
@@ -80,7 +82,7 @@ public class drag : MonoBehaviour {
 
 
         }
-        else
+        if (Input.GetMouseButton(0) && !Input.GetMouseButton(1))
         {
             
             

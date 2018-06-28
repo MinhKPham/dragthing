@@ -18,7 +18,7 @@ public class login : MonoBehaviour {
     {
     
             // Only specifying the sceneName or sceneBuildIndex will load the Scene with the Single mode
-            SceneManager.LoadScene("mainsc");
+            SceneManager.LoadScene("mainsc", LoadSceneMode.Single);
        
     }
 }

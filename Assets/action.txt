@@ -1,11 +1,33 @@
-
 start
-zoom in
-zoom in
-zoom in
-zoom in
-zoom out
-zoom out
-zoom out
-zoom out
-zoom out
+drag to move
+start
+drag to move
+start
+drag to move
+drag to move
+drag to move
+start
+start
+drag to move
+drag to move
+start
+drag to move
+drag to move
+drag to move
+start
+drag to move
+drag to move
+drag to move
+start
+drag to move
+drag to move
+start
+drag to move
+drag to move
+start
+drag to move
+drag to move
+drag to move
+drag to move
+drag to move
+drag to rotate
